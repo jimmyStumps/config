@@ -9,12 +9,14 @@ void findPairs (Game g) {
     int cardVal;
     int same = TRUE;
     int count = 0;
+    int looped;
 
     bubbleSort (hand);
 
     if (listLen(hand) >= 4) {
         //Outer loop to find each set of 4
         while (card->next != NULL) {
+            looped = FALSE;
             headCard = card;
             cardVal = card->value;
 
@@ -22,20 +24,25 @@ void findPairs (Game g) {
             pairCard = card;
             while (same == TRUE && count < PAIR_SIZE &&
             pairCard->next != NULL) {
+                looped = TRUE;
+                pairCard = pairdCard->next;
                 if (cardVal == card->value) {
                     same = TRUE;
                     count++;
                 } else {
                     same = FALSE;
                 }
-                pairCard = pairdCard->next;
             }
 
             if (count == PAIR_SIZE) {
                 removePair (g, headCard);
             }
-
-            card = pairCard;
+            
+            if(looped) {
+                card = pairCard;
+            } else {
+                card = pairCard->next;
+            }
         }
     }
 }
