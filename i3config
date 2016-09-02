@@ -184,8 +184,8 @@ bindsym $mod2+q mode "$mode_system"
 set $open [v]ivaldi [l]ibreoffice
 
 mode "$open" {
-    bindsym v exec --no-startup-id vivaldi, mode "default"
-    bindsym l exec --no-startup-id libreoffice, mode "default"
+    bindsym v exec vivaldi, mode "default"
+    bindsym l exec libreoffice, mode "default"
 
     #Return to normal
     bindsym Return mode "default"
